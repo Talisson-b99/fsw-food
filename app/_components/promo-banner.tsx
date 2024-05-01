@@ -4,11 +4,10 @@ import Image, { ImageProps } from "next/image";
 const PromoBanner = (props: ImageProps) => {
   return (
     <Image
-      width={0}
-      height={0}
-      sizes="100vw"
+      width={600}
+      height={600}
       quality={100}
-      className="h-auto w-full"
+      className="h-auto max-h-full w-full max-w-full"
       {...props}
     />
   );

@@ -1,14 +1,17 @@
 import { db } from "../_lib/prisma";
 import CategoryItem from "./category-item";
+import Container from "./container";
 
 const CategoryList = async () => {
   const categories = await db.category.findMany({});
   return (
-    <div className="flex gap-3 overflow-scroll px-5 py-6 lg:justify-center [&::-webkit-scrollbar]:hidden">
-      {categories.map((categorie) => (
-        <CategoryItem category={categorie} key={categorie.id} />
-      ))}
-    </div>
+    <Container>
+      <div className="flex gap-3 overflow-x-scroll px-5 py-6 lg:px-0 [&::-webkit-scrollbar]:hidden">
+        {categories.map((categorie) => (
+          <CategoryItem category={categorie} key={categorie.id} />
+        ))}
+      </div>
+    </Container>
   );
 };
 
