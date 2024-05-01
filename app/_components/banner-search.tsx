@@ -5,7 +5,7 @@ import { SearchIcon } from "lucide-react";
 
 const BannerSearch = () => {
   return (
-    <div className="flex h-[500px] gap-[60px] bg-primary px-32">
+    <div className="flex h-[500px] justify-center  gap-[90px] bg-primary px-32">
       <div className="flex flex-col items-start justify-center">
         <h1 className="text-5xl font-bold text-white">Está com fome?</h1>
         <p className="text-lg text-white">
@@ -24,14 +24,14 @@ const BannerSearch = () => {
           </div>
         </div>
       </div>
-      <div className="relative flex-1">
+      <div className="">
         <Image
           src="/banner-search-desktop.png"
           alt="proto de macarrão com legumes"
           width={377}
           height={377}
           quality={100}
-          className="absolute bottom-0 left-0 right-0 h-[327px] w-[327px]"
+          className="mt-[172px] h-[327px] w-[327px]"
         />
       </div>
     </div>
