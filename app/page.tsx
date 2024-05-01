@@ -43,7 +43,6 @@ export default async function Home() {
         <div className="">
           <CategoryList />
         </div>
-        {/* ------------------- */}
         <div className="flex flex-col">
           <div className="px-5 lg:hidden">
             <PromoBanner src="/promo-banner-01.png" alt="até 30% de desconto" />
@@ -81,10 +80,8 @@ export default async function Home() {
           </div>
         </div>
 
-        {/* ------------------- */}
-
         <div className="py-6">
-          <div className="flex items-center justify-between px-5">
+          <div className="flex items-center justify-between px-5 lg:px-0">
             <h2 className="font-semibold">Restaurantes Recomendados</h2>
             <Button
               variant="ghost"
