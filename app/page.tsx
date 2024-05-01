@@ -10,6 +10,7 @@ import { ChevronRight } from "lucide-react";
 
 import { db } from "./_lib/prisma";
 import RestaurantList from "./_components/restaurant-list";
+import BannerSearch from "./_components/banner-search";
 
 export default async function Home() {
   const products = await db.product.findMany({
@@ -34,6 +35,11 @@ export default async function Home() {
       <div className="px-5 pt-6">
         <Search />
       </div>
+
+      <div className="hidden lg:block">
+        <BannerSearch />
+      </div>
+
       <div className="">
         <CategoryList />
       </div>
