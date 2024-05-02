@@ -62,7 +62,7 @@ export default async function Home() {
             <ProductList products={products} />
           </div>
 
-          <div className="order-2 gap-5 px-5 pt-6 lg:flex lg:items-center lg:justify-between lg:px-0">
+          <div className="px-5 pt-6 lg:order-2 lg:flex lg:items-center lg:justify-between lg:gap-5 lg:px-0">
             <div className="hidden w-full lg:block">
               <PromoBanner
                 src="/promo-banner-01.png"
