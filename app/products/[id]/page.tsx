@@ -48,10 +48,7 @@ const ProductsPage = async ({ params: { id } }: ProductPageProps) => {
   return (
     <div>
       <ProductImage product={product} />
-
-      <div className="py-5">
-        <ProductDetails product={product} complementaryProducts={juices} />
-      </div>
+      <ProductDetails product={product} complementaryProducts={juices} />
     </div>
   );
 };

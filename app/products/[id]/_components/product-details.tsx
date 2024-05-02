@@ -43,7 +43,7 @@ const ProductDetails = ({
     setQuantity((prev) => prev - 1);
   };
   return (
-    <>
+    <div className="relative -mt-5 rounded-t-3xl bg-white py-5">
       <div className="flex items-center gap-1.5 px-5">
         <div className="relative size-6 overflow-hidden rounded-full">
           <Image
@@ -192,7 +192,7 @@ const ProductDetails = ({
         <h3 className="mb-3 px-5 font-semibold">Sucos</h3>
         <ProductList products={complementaryProducts} />
       </div>
-    </>
+    </div>
   );
 };
 
