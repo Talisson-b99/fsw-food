@@ -22,8 +22,11 @@ interface ProductItemProps {
 
 const ProductItem = ({ product }: ProductItemProps) => {
   return (
-    <Link href={`/products/${product.id}`}>
-      <div className="min-w-[150px] max-w-[150px]">
+    <Link
+      href={`/products/${product.id}`}
+      className="min-w-[150px] max-w-[150px]"
+    >
+      <div className="">
         <div className="relative overflow-hidden rounded-xl">
           <Image
             src={product.imageUrl}
