@@ -1,5 +1,5 @@
 import Header from "./_components/header";
-import Search from "./_components/serach";
+import Search from "./_components/search";
 import PromoBanner from "./_components/promo-banner";
 import ProductList from "./_components/product-list";
 import CategoryList from "./_components/category-list";
