@@ -1,5 +1,6 @@
 "use client";
 
+import Container from "@/app/_components/container";
 import DeliveryInfo from "@/app/_components/delivery-info";
 import DiscountBadge from "@/app/_components/discount-badge";
 import ProductList from "@/app/_components/product-list";
@@ -44,79 +45,97 @@ const ProductDetails = ({
     setQuantity((prev) => prev - 1);
   };
   return (
-    <div className="relative -mt-5 rounded-t-3xl bg-white py-5">
-      <div className="flex items-center gap-1.5 px-5">
-        <div className="relative size-6 overflow-hidden rounded-full">
-          <Image
-            src={product.restaurant.imageUrl}
-            alt={product.restaurant.name}
-            fill
-            objectFit="cover"
-          />
-        </div>
-        <span className="text-xs text-muted-foreground">
-          {product.restaurant.name}
-        </span>
-      </div>
-
-      {/* Nome do produto */}
-      <h1 className="mb-2 mt-1 px-5 text-xl font-semibold">{product.name}</h1>
-
-      {/* preço do produto e quantidade */}
-      <div className="flex justify-between px-5">
-        {/* preço */}
-        <div>
-          <div className="flex items-center gap-1.5">
-            <h2 className="text-xl font-semibold">
-              {formatCurrency(calculateProductTotalPrice(product))}
-            </h2>
-            {product.discountPercentage > 0 && (
-              <DiscountBadge product={product} />
-            )}
+    <Container>
+      <div className="relative -mt-5 rounded-t-3xl bg-white py-5">
+        <div className="flex lg:gap-10">
+          <div className=" relative hidden h-[500px] w-[600px] overflow-hidden rounded-xl lg:block">
+            <Image src={product.imageUrl} alt={product.name} fill />
           </div>
-          {product.discountPercentage > 0 && (
-            <span className="block text-xs text-muted-foreground">
-              De: {formatCurrency(Number(product.price))}
-            </span>
-          )}
+          <div className="flex-1">
+            <div className="flex items-center gap-1.5 px-5">
+              <div className="relative size-6 overflow-hidden rounded-full">
+                <Image
+                  src={product.restaurant.imageUrl}
+                  alt={product.restaurant.name}
+                  fill
+                  objectFit="cover"
+                />
+              </div>
+              <span className="text-xs text-muted-foreground">
+                {product.restaurant.name}
+              </span>
+            </div>
+
+            {/* Nome do produto */}
+            <h1 className="mb-2 mt-1 px-5 text-xl font-semibold">
+              {product.name}
+            </h1>
+
+            {/* preço do produto e quantidade */}
+            <div className="flex justify-between px-5">
+              {/* preço */}
+              <div>
+                <div className="flex items-center gap-1.5">
+                  <h2 className="text-xl font-semibold">
+                    {formatCurrency(calculateProductTotalPrice(product))}
+                  </h2>
+                  {product.discountPercentage > 0 && (
+                    <DiscountBadge product={product} />
+                  )}
+                </div>
+                {product.discountPercentage > 0 && (
+                  <span className="block text-xs text-muted-foreground">
+                    De: {formatCurrency(Number(product.price))}
+                  </span>
+                )}
+              </div>
+
+              {/* Quantidade */}
+              <div className="flex items-center gap-2">
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="border border-muted-foreground"
+                  onClick={handleDecreaseQuantityClick}
+                >
+                  <ChevronLeftIcon />
+                </Button>
+                <span className="block w-4 text-center">{quantity}</span>
+
+                <Button size="icon" onClick={handleIncreaseQuantityClick}>
+                  <ChevronRightIcon />
+                </Button>
+              </div>
+            </div>
+
+            {/* Dados da entrega */}
+            <DeliveryInfo restaurant={product.restaurant} />
+
+            <div className=" mt-6 px-5">
+              <h3 className="mb-3 font-semibold">Sobre</h3>
+              <p className="text-sm text-muted-foreground">
+                {product.description}
+              </p>
+            </div>
+
+            <div className="mt-6 hidden lg:block">
+              <Button className="h-[45px] w-full text-sm font-semibold">
+                Adicionar à sacola
+              </Button>
+            </div>
+          </div>
         </div>
-
-        {/* Quantidade */}
-        <div className="flex items-center gap-2">
-          <Button
-            size="icon"
-            variant="ghost"
-            className="border border-muted-foreground"
-            onClick={handleDecreaseQuantityClick}
-          >
-            <ChevronLeftIcon />
-          </Button>
-          <span className="block w-4 text-center">{quantity}</span>
-
-          <Button size="icon" onClick={handleIncreaseQuantityClick}>
-            <ChevronRightIcon />
+        <div className="pt-6">
+          <h3 className="mb-3 px-5 font-semibold">Sucos</h3>
+          <ProductList products={complementaryProducts} />
+        </div>
+        <div className="mt-6 px-5 lg:hidden">
+          <Button className="h-[45px] w-full text-sm font-semibold">
+            Adicionar à sacola
           </Button>
         </div>
       </div>
-
-      {/* Dados da entrega */}
-      <DeliveryInfo restaurant={product.restaurant} />
-
-      <div className=" mt-6 px-5">
-        <h3 className="mb-3 font-semibold">Sobre</h3>
-        <p className="text-sm text-muted-foreground">{product.description}</p>
-      </div>
-
-      <div className="pt-6">
-        <h3 className="mb-3 px-5 font-semibold">Sucos</h3>
-        <ProductList products={complementaryProducts} />
-      </div>
-      <div className="mt-6 px-5">
-        <Button className="h-[45px] w-full text-sm font-semibold">
-          Adicionar à sacola
-        </Button>
-      </div>
-    </div>
+    </Container>
   );
 };
 

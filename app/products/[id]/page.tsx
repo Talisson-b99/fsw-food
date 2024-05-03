@@ -5,6 +5,7 @@ import { db } from "@/app/_lib/prisma";
 import ProductImage from "./_components/product-image";
 
 import ProductDetails from "./_components/product-details";
+import Header from "@/app/_components/header";
 
 interface ProductPageProps {
   params: {
@@ -47,8 +48,16 @@ const ProductsPage = async ({ params: { id } }: ProductPageProps) => {
 
   return (
     <div>
-      <ProductImage product={product} />
-      <ProductDetails product={product} complementaryProducts={juices} />
+      <div className="hidden lg:block">
+        <Header />
+      </div>
+      <div className="lg:hidden">
+        <ProductImage product={product} />
+      </div>
+
+      <div className="lg:mt-5">
+        <ProductDetails product={product} complementaryProducts={juices} />
+      </div>
     </div>
   );
 };
