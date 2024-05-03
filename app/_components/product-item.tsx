@@ -7,6 +7,7 @@ import { calculateProductTotalPrice } from "../_helpers/price";
 import { Badge } from "./ui/badge";
 import { ArrowDownIcon } from "lucide-react";
 import Link from "next/link";
+import { cn } from "../_lib/utils";
 
 interface ProductItemProps {
   product: Prisma.ProductGetPayload<{
@@ -18,24 +19,26 @@ interface ProductItemProps {
       };
     };
   }>;
+  className?: string;
 }
 
-const ProductItem = ({ product }: ProductItemProps) => {
+const ProductItem = ({ product, className }: ProductItemProps) => {
   return (
     <Link
       href={`/products/${product.id}`}
-      className="min-w-[150px] max-w-[150px]"
+      className={cn("min-w-[150px] max-w-[150px]", className)}
     >
       <div className="">
-        <div className="relative overflow-hidden rounded-xl">
-          <Image
-            src={product.imageUrl}
-            alt={product.name}
-            width={150}
-            height={150}
-            quality={100}
-            className="max-h-[150px] min-h-[150px]  min-w-[150px] max-w-[150px] object-cover"
-          />
+        <div className="relative w-full overflow-hidden rounded-xl">
+          <div className="relative min-h-[150px] w-full">
+            <Image
+              src={product.imageUrl}
+              alt={product.name}
+              fill
+              quality={100}
+              className="object-cover"
+            />
+          </div>
           {product.discountPercentage > 0 && (
             <Badge className="absolute left-2 top-2 flex items-center gap-[2px] text-xs font-semibold">
               <ArrowDownIcon size={12} />

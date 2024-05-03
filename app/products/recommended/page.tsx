@@ -19,9 +19,13 @@ const ProducstRecommended = async () => {
       <Header />
       <div className="p-5">
         <h2 className="mb-6 text-lg font-semibold">Produtos recomendados</h2>
-        <div className="grid w-full grid-cols-2 flex-col items-center justify-center justify-items-center space-y-6">
+        <div className="grid w-full grid-cols-2 flex-col items-center justify-center justify-items-center gap-3 space-y-6 lg:grid-cols-3 lg:gap-5 xl:grid-cols-4">
           {products.map((product) => (
-            <ProductItem key={product.id} product={product} />
+            <ProductItem
+              key={product.id}
+              product={product}
+              className="min-w-full max-w-full"
+            />
           ))}
         </div>
       </div>
