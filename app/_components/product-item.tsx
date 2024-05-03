@@ -33,7 +33,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
             quality={100}
             className="max-h-[150px] min-h-[150px]  min-w-[150px] max-w-[150px] object-cover"
           />
-          {product.discountPercentage > 0 && (
+          {product.discountPercentage && (
             <Badge className="absolute left-2 top-2 flex items-center gap-[2px] text-xs font-semibold">
               <ArrowDownIcon size={12} />
               {product.discountPercentage}%
